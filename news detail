@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warga App - Article Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e4e2e1",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-secondary-fixed-variant": "#474836",
+                        "on-primary-fixed-variant": "#2a4386",
+                        "tertiary-container": "#003007",
+                        "surface-bright": "#fcf9f8",
+                        "on-tertiary-fixed": "#002204",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#002366",
+                        "on-surface-variant": "#444650",
+                        "secondary": "#5e604d",
+                        "inverse-primary": "#b3c5ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container": "#f0eded",
+                        "inverse-surface": "#303030",
+                        "outline": "#757682",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#00174a",
+                        "background": "#fcf9f8",
+                        "error": "#ba1a1a",
+                        "surface": "#fcf9f8",
+                        "on-primary-container": "#758dd5",
+                        "primary": "#00113a",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary-container": "#636451",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-container": "#e1e1c9",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#435b9f",
+                        "outline-variant": "#c5c6d2",
+                        "on-tertiary-container": "#3fa345",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#94f990",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "tertiary-fixed-dim": "#78dc77",
+                        "on-background": "#1b1c1c",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#e4e4cc",
+                        "on-secondary-fixed": "#1b1d0e",
+                        "secondary-fixed-dim": "#c8c8b0",
+                        "tertiary": "#001902",
+                        "inverse-on-surface": "#f3f0f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "1.5rem",
+                        "gutter": "1rem",
+                        "base": "8px",
+                        "md": "1rem",
+                        "container-margin": "1.5rem",
+                        "xl": "2rem",
+                        "xs": "0.25rem",
+                        "sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased pb-24">
+<!-- Top App Bar -->
+<header class="bg-primary flex justify-between items-center px-container-margin py-md w-full sticky top-0 z-40">
+<div class="flex items-center gap-sm">
+<button class="text-on-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<span class="font-headline-sm text-headline-sm text-on-primary">News</span>
+</div>
+<button class="text-on-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="max-w-[1200px] mx-auto pb-lg">
+<!-- Header Image -->
+<div class="w-full aspect-video bg-surface-variant relative overflow-hidden md:rounded-b-xl">
+<img alt="Community gathering in a park" class="w-full h-full object-cover" data-alt="A bright, sunlit community gathering in a lush green residential park. Neighbors of various ages are seen interacting pleasantly in the background. The scene emphasizes a warm, modern corporate hospitality aesthetic, utilizing soft natural lighting that complements a clean beige and royal blue color palette. The mood is highly approachable, safe, and neighborly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqHg7WDBod_IEXx1VMyZN5ON9cvGy4Kq9JukbYURKmQOcKDop6azFy2zU3Y_rnv6fpefKUQir7WF1nLRM2fzDbBK9YWQlh-ifREKT97hFD-wizjWGNWl1f_xeUBzEDNuvycOgwEfxJedaMH_-5ymF8v2SozYzg1P6DzUHaLKPHU1yOUXa_cQA-G-b1NcR-I5qNuT1FUXzPsNd4wP-v8wIaFgua40rbUouZgH5JNp-8AixnR57z943IPJlrYrtxkszbD4UJJtNTBLDE"/>
+</div>
+<div class="px-container-margin py-lg max-w-3xl mx-auto">
+<!-- Article Header -->
+<div class="mb-lg">
+<div class="flex items-center gap-xs mb-sm">
+<span class="bg-tertiary-fixed-dim text-on-tertiary-fixed-variant px-2 py-1 rounded-full font-label-sm text-label-sm inline-block">Pengumuman</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-sm">Perbaikan Fasilitas Taman Bermain Anak di Sektor Utara</h1>
+<div class="flex items-center gap-sm mt-md pb-md border-b border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Admin RW 05</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">12 Oktober 2023 • 09:00 WIB</p>
+</div>
+</div>
+</div>
+<!-- Article Body -->
+<article class="font-body-md text-body-md text-on-surface-variant space-y-md">
+<p>
+                    Yth. Warga RW 05, kami informasikan bahwa mulai hari Senin depan, tanggal 16 Oktober 2023, akan dilakukan perbaikan dan pemeliharaan fasilitas di taman bermain anak sektor utara. Perbaikan ini meliputi penggantian ayunan yang rusak, pengecatan ulang perosotan, dan penambahan lapisan karet pengaman pada lantai area bermain.
+                </p>
+<p>
+                    Langkah ini diambil menindaklanjuti laporan warga pada pertemuan bulanan terakhir mengenai kondisi beberapa alat bermain yang sudah tidak layak pakai dan berpotensi membahayakan keselamatan anak-anak kita. Keamanan dan kenyamanan warga, khususnya anak-anak, selalu menjadi prioritas utama pengurus RW.
+                </p>
+<!-- Secondary Image Embed -->
+<figure class="my-lg rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+<img alt="Playground repair plan" class="w-full h-auto object-cover aspect-video" data-alt="A clean, modern blueprint or architectural sketch of a neighborhood playground layout resting on a light beige desk. The image incorporates subtle royal blue highlights indicating areas for new equipment installation. The lighting is bright and evenly diffused, creating a professional, organized, and reassuring atmosphere consistent with a well-managed residential community." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2mzmlJeQ0azGQIRSRAUQ7wZbqwjnOH2-g_Mn44ZjtUiTSNx4OWO5LrMnLJqgEBVIkdwCcgkz4hCuEqElHNO_SJP05l4SBA12qGsx44ViXMma8xRRNw533iNeJ75oH3GZ5_NbZP02RDLV6SWuqngoxdv-bvFnlfAu0AYbo-Pw1_gsf1rlJRlBHoNHsVVBLV0mnQhR43Zx7MT22zA_WX5OAqMxtkBw36bNAJrgDBKMhJMHhy6ulY-A4rcnXay0cqb8GlEtrdvUMl6yL"/>
+<figcaption class="bg-surface-container p-sm font-body-sm text-body-sm text-center text-on-surface-variant">
+                         Desain rencana perbaikan area bermain.
+                     </figcaption>
+</figure>
+<p>
+                    Selama proses pengerjaan yang diperkirakan memakan waktu kurang lebih satu minggu, area taman bermain anak di sektor utara akan ditutup sementara untuk umum. Kami mohon maaf atas ketidaknyamanan ini dan mengimbau kepada para orang tua untuk sementara waktu mengarahkan putra-putrinya bermain di taman sektor selatan.
+                </p>
+<p>
+                    Terima kasih atas pengertian dan kerjasama seluruh warga. Mari kita jaga bersama fasilitas umum di lingkungan kita agar senantiasa aman dan nyaman digunakan.
+                </p>
+</article>
+</div>
+<!-- Related News Section -->
+<section class="px-container-margin py-lg bg-surface-container-low mt-xl border-t border-outline-variant/20">
+<div class="max-w-3xl mx-auto">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-md">Berita Terkait</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<!-- Related Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:-translate-y-[2px] transition-transform cursor-pointer">
+<div class="flex gap-md">
+<div class="w-20 h-20 rounded-lg bg-surface-variant flex-shrink-0 overflow-hidden">
+<img alt="Meeting" class="w-full h-full object-cover" data-alt="A close-up of hands holding documents over a polished wooden table during a neighborhood council meeting. Soft, warm lighting highlights the papers, creating an atmosphere of collaborative community planning. The color palette features neutral beiges and deep blue accents to maintain a professional, reliable tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkwmRYotVJ76BKaTnPGpcib66Twmj-eJdYnbtJ6TVnyW_YpU2Yhadk29Uz6bkVkzseW0tM5gvW3Nla2ZjV4jpEZ5vySmy-yr77RvcbRX4VGAgxGv7NKdAwYKfBXTOMHhCkirxXa3KMMJZZez_N7_X8vtUrbIqPvijTIZJ2OFSyoDPgC94Ubl6ph2uzDOnrUyqfVWjM9w4f3MkdRk6XbfIuOgA-XEzmxQ2vI8dzdFCHlN2xHTxAP2nonpzd_b_HBdqtl_URW48H3YHD"/>
+</div>
+<div class="flex flex-col justify-between">
+<h4 class="font-label-md text-label-md text-on-surface line-clamp-2">Jadwal Rapat Rutin Warga Bulan November</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-xs">2 hari yang lalu</span>
+</div>
+</div>
+</div>
+<!-- Related Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:-translate-y-[2px] transition-transform cursor-pointer">
+<div class="flex gap-md">
+<div class="w-20 h-20 rounded-lg bg-surface-variant flex-shrink-0 overflow-hidden">
+<img alt="Security patrol" class="w-full h-full object-cover" data-alt="A uniformed security guard patrolling a quiet, well-lit residential street at dusk. The warm glow of street lamps provides a comforting, secure atmosphere. The composition emphasizes safety and diligence, utilizing a subtle contrast between the evening shadows and the warm artificial light, keeping with a modern, trustworthy community aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZhVaPmxciO6LLdw_7FnXD5-h_H8qsYBGw6eL8Re_fbrDzEUDFCCdZOqD1RxLArHo0L5pF-9AuTGz7ZfIDTbJa0pH_TETt62uKpakquPoYsrYnOOb0s287MhCgrrHGrtVKugzUSjbNd_N8keNzdlj7LXMzK0rHRkEkqVtDqgPA-vJ0aptQoZM90cwOPiAIPoiKTE0ew3w8LL9EjqdPtUEsoiEL1dPJma-zQ7ywki-TXflG95FhFlh9Dd2d2x0afSQ2wv2CHb89LXnw"/>
+</div>
+<div class="flex flex-col justify-between">
+<h4 class="font-label-md text-label-md text-on-surface line-clamp-2">Peningkatan Keamanan Lingkungan Menjelang Akhir Tahun</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-xs">1 minggu yang lalu</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="bg-surface dark:bg-surface-container-lowest fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 rounded-t-xl shadow-lg shadow-[0_-4px_12px_rgba(0,0,0,0.05)] md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-sm text-label-sm mt-1">UMKM</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm mt-1">IPL</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="campaign" style="font-variation-settings: 'FILL' 1;">campaign</span>
+<span class="font-label-sm text-label-sm mt-1">News</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

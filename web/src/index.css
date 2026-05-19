@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Minimalist dual-tone + semantic states */
+  --color-beige: #f5eedc;
+  --color-royal: #002366;
+  --color-muted: #5c5a55;
+  --color-success: #0d5c2f;
+  --color-success-soft: #d8f3e0;
+  --color-danger: #9a1c1c;
+  --color-danger-soft: #fde2e2;
+  --color-surface: #ffffff;
+  --color-page-grey: #f8f8f8;
+  --color-wa: #25d366;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  background-color: var(--color-beige);
+  color: var(--color-royal);
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+@layer components {
+  /* Kartu putih di atas background krem — tepi & bayangan lebih jelas */
+  .surface-card {
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-royal) 22%, transparent);
+    background-color: var(--color-surface);
+    box-shadow:
+      0 1px 2px rgba(0, 35, 102, 0.06),
+      0 6px 20px rgba(0, 35, 102, 0.1);
+  }
+
+  .surface-icon-btn {
+    border: 1px solid color-mix(in srgb, var(--color-royal) 14%, transparent);
+    background-color: var(--color-surface);
+    box-shadow: 0 2px 8px rgba(0, 35, 102, 0.1);
+  }
+}

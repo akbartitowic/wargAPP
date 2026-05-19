@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warga App - News Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e4e2e1",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-secondary-fixed-variant": "#474836",
+                        "on-primary-fixed-variant": "#2a4386",
+                        "tertiary-container": "#003007",
+                        "surface-bright": "#fcf9f8",
+                        "on-tertiary-fixed": "#002204",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#002366",
+                        "on-surface-variant": "#444650",
+                        "secondary": "#5e604d",
+                        "inverse-primary": "#b3c5ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container": "#f0eded",
+                        "inverse-surface": "#303030",
+                        "outline": "#757682",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#00174a",
+                        "background": "#fcf9f8",
+                        "error": "#ba1a1a",
+                        "surface": "#fcf9f8",
+                        "on-primary-container": "#758dd5",
+                        "primary": "#00113a",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary-container": "#636451",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-container": "#e1e1c9",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#435b9f",
+                        "outline-variant": "#c5c6d2",
+                        "on-tertiary-container": "#3fa345",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#94f990",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "tertiary-fixed-dim": "#78dc77",
+                        "on-background": "#1b1c1c",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#e4e4cc",
+                        "on-secondary-fixed": "#1b1d0e",
+                        "secondary-fixed-dim": "#c8c8b0",
+                        "tertiary": "#001902",
+                        "inverse-on-surface": "#f3f0f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "1.5rem",
+                        "gutter": "1rem",
+                        "base": "8px",
+                        "md": "1rem",
+                        "container-margin": "1.5rem",
+                        "xl": "2rem",
+                        "xs": "0.25rem",
+                        "sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for chips but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container font-headline-sm text-headline-sm docked full-width top-0 bg-primary flat no shadows flex justify-between items-center px-container-margin py-md w-full sticky z-40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Resident Profile Photo" class="w-full h-full object-cover" data-alt="A close up portrait of a friendly young man smiling gently, wearing a casual light blue shirt. The background is a soft, blurred bright outdoor setting, conveying a sense of approachability and community warmth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuw9dqac9ENqNVZzi7WOnWn3aI7_zYrxi-tk-Gq9MoF-Pk0SKFIsidXsJvjMJJGOAuLs3eVBXYq1m8UGAu-TblqM1QQwnKNszu9HJLuUII-cuTu9XSfXnYZVZeFqjz9F8b6Fag3g7MtpZPC7wD5cdTSfD_smcUxdKk3d-xK1YHwKopgtLqZTnFIFT6TrTiIoR_O-iqTBTDLPZpVIRQmsAk1EJ_TqBeidylBUhu1-7rxIwbTLM4PrbTu3l-ZKcNuzznegieyFpMnb_w"/>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-on-primary">Warga App</span>
+</div>
+<button class="text-on-primary hover:opacity-80 active:scale-95 transition-transform flex items-center justify-center w-10 h-10 rounded-full hover:bg-on-primary/10">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Sticky Search & Categories -->
+<div class="sticky top-[72px] z-30 bg-surface/90 backdrop-blur-md pt-4 pb-2 px-container-margin shadow-[0_4px_12px_rgba(0,0,0,0.02)]">
+<!-- Search Bar -->
+<div class="relative w-full mb-4">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 border border-outline-variant rounded-xl leading-5 bg-surface-container-lowest placeholder-outline focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md transition-all shadow-sm" placeholder="Cari berita atau pengumuman..." type="text"/>
+</div>
+<!-- Chips -->
+<div class="flex overflow-x-auto gap-2 no-scrollbar pb-2">
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-colors shadow-sm">Semua</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container border border-primary text-primary font-label-md text-label-md hover:bg-surface-variant transition-colors">Pengumuman</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container border border-primary text-primary font-label-md text-label-md hover:bg-surface-variant transition-colors">Keamanan</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container border border-primary text-primary font-label-md text-label-md hover:bg-surface-variant transition-colors">Kegiatan</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-surface-container border border-primary text-primary font-label-md text-label-md hover:bg-surface-variant transition-colors">UMKM Info</button>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 px-container-margin pt-2 pb-8 max-w-[1200px] mx-auto w-full flex flex-col gap-6">
+<!-- Hero Banner (Pinned) -->
+<section class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A beautiful wide shot of a modern residential neighborhood park during late afternoon golden hour. Warm sunlight filters through large leafy trees, illuminating a clean paved pathway and manicured lawns. The atmosphere is peaceful, secure, and highly inviting, representing a premium community living standard." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRttZ0rg1luItAEg0v7MGv1it2izYRTJeGgbaovL485mTij452BxKnPDSiPuFeKKzYDQb66IiZqc8SdGstGFBpGrTvmRC_7UnMPxnvqx1wPbsq-CETlBFnTZERXaDALGLWNJnIe-poFJxxG5dEO1XmeQ1AWbFzkExWvZ4bYYgFZXhvjZsxNRgsMvZXnr5i-94LraThpv7EcI1UnHZiHbicTayHKL_nmsxAKSwHN6qDrVOCfVMmFMDs6VX3tpQZsFJEk2JG5MJ4hBLG');"></div>
+<!-- Linear gradient overlay (Royal Blue to transparent) -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent opacity-90"></div>
+<div class="absolute inset-0 p-4 md:p-6 flex flex-col justify-between">
+<div class="flex justify-start">
+<span class="bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm px-2 py-1 rounded shadow-sm">PENTING</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-primary line-clamp-2">Perbaikan Saluran Air Blok A dan B Akhir Pekan Ini</h2>
+<div class="flex items-center gap-1 text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-body-sm text-body-sm">2 Jam yang lalu</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary News List -->
+<section class="flex flex-col gap-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Terbaru Hari Ini</h3>
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl flex overflow-hidden shadow-[0_4px_12px_rgba(0,0,139,0.08)] border border-surface-variant hover:-translate-y-[2px] transition-transform cursor-pointer h-[120px]">
+<div class="w-[120px] h-full flex-shrink-0">
+<img alt="Pasar UMKM" class="w-full h-full object-cover" data-alt="A lively outdoor community weekend market setup with small tents and vendor tables. Fresh produce and local goods are displayed attractively. The scene is brightly lit with natural daytime sunlight, showing a bustling but orderly community gathering with a warm, friendly vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4hET_aR8EKDnQWMdkug3K_Q4GFCqy7YM1Qx20pTsYWJ7nXKqkgO3w4H9_QKUzuFCHRIZvf5ezLhORuTIAcQdlgd3kgPqG8jKHsJSZMFtbIIA1r5isWaqfzU1upEW5G_z9b0QbWIHl6ufHsQAsKTdGG1iNPxQGRlOmMSXzhLU94Vqc89SMb4wo_k28k6vQ6xxK7zIR-nsNtgxNNOTnShwTuUsECVjQArf698wlrgfAd-Q3e8K2IInomiUSaNCL21lMbq4JaVWqgtox"/>
+</div>
+<div class="p-3 flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-sm text-label-sm text-primary">UMKM Info</span>
+<span class="font-label-sm text-label-sm text-outline">5 Jam</span>
+</div>
+<h4 class="font-headline-sm text-[16px] leading-[22px] font-semibold text-on-surface line-clamp-2">Bazaar Kuliner Warga Hadir Lagi Minggu Ini</h4>
+</div>
+<p class="font-body-sm text-[13px] leading-[18px] text-on-surface-variant line-clamp-1">Jangan lewatkan aneka jajanan dari tetangga kita di taman utama.</p>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl flex overflow-hidden shadow-[0_4px_12px_rgba(0,0,139,0.08)] border border-surface-variant hover:-translate-y-[2px] transition-transform cursor-pointer h-[120px]">
+<div class="w-[120px] h-full flex-shrink-0">
+<img alt="Rapat Keamanan" class="w-full h-full object-cover" data-alt="A group of diverse adults sitting around a modern, well-lit conference table inside a community hall. They are engaged in a focused discussion. The room features warm wood accents and crisp white walls, embodying a professional yet cooperative residential committee meeting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZtc7u2IJccG5ZfZXGSOFqieN9FyRFfnkTsyL9QJxHVnRKgttm4kd8jcpOzPA6IMdStur-U0avezIf7Woje_oOUybLpsLdYAK4VbWy8LFL0_w24Dx2D85S4lHDcGT57AmlXWn5C6ewJVrf720lBN41xQWLVjhCvm4PR7A3XEkxH2YHJsdgEFefRjrEn_7_qhk0vX-DeIcnm0Aaim2tAP_dJuC6beLe196KeQdltEdkFivWYvhBWbDkSZP-vUhmWoVvI0pB1n88izEv"/>
+</div>
+<div class="p-3 flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-sm text-label-sm text-primary">Keamanan</span>
+<span class="font-label-sm text-label-sm text-outline">1 Hari</span>
+</div>
+<h4 class="font-headline-sm text-[16px] leading-[22px] font-semibold text-on-surface line-clamp-2">Evaluasi Sistem Keamanan Gerbang Utama</h4>
+</div>
+<p class="font-body-sm text-[13px] leading-[18px] text-on-surface-variant line-clamp-1">Hasil rapat bulanan RT/RW mengenai akses tamu.</p>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl flex overflow-hidden shadow-[0_4px_12px_rgba(0,0,139,0.08)] border border-surface-variant hover:-translate-y-[2px] transition-transform cursor-pointer h-[120px]">
+<div class="w-[120px] h-full flex-shrink-0">
+<img alt="Kerja Bakti" class="w-full h-full object-cover" data-alt="Several people engaging in a community gardening and cleanup activity outdoors in a residential park. They are wearing casual clothes and using gardening tools. The atmosphere is sunny, energetic, and collaborative, showing residents caring for their shared environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd3rTErRzYHByQzoNNH3FwTL37S3BWj-Ir7bypmDFfLOdPsVFV7ymnY-nZSE_bZzw16O-ChdZ8vi0QWbb-KzgpBKugQ5ly3VbLiOMMr2-lkalA9dQsjnuu3NptwTZzNj2RoaCpZ7sSi2_ujpYYyDvdJSipckUUV2kvXzZ1tNTFZhgfJS0Or_7PuHn_Qd6Kis-vOAAdmMd9weh9fi2GUBxIjenk0ol8sJLbs0joduJtOVgC6WGLhHLIuBvDpAX6LU5N97hH5X8dSi8p"/>
+</div>
+<div class="p-3 flex flex-col justify-between flex-1">
+<div>
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-sm text-label-sm text-primary">Kegiatan</span>
+<span class="font-label-sm text-label-sm text-outline">2 Hari</span>
+</div>
+<h4 class="font-headline-sm text-[16px] leading-[22px] font-semibold text-on-surface line-clamp-2">Jadwal Kerja Bakti Rutin Bulan Ini</h4>
+</div>
+<p class="font-body-sm text-[13px] leading-[18px] text-on-surface-variant line-clamp-1">Mari bersama menjaga kebersihan lingkungan cluster kita.</p>
+</div>
+</article>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface dark:bg-surface-container-lowest text-primary dark:text-primary-fixed-dim font-label-sm text-label-sm font-headline-sm text-headline-sm text-primary docked full-width bottom-0 rounded-t-xl shadow-[0_-4px_12px_rgba(0,0,0,0.05)] shadow-lg fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 md:hidden">
+<!-- Home (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors Active: scale-90 duration-150 p-2 rounded-xl">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</button>
+<!-- UMKM (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors Active: scale-90 duration-150 p-2 rounded-xl">
+<span class="material-symbols-outlined mb-1">shopping_bag</span>
+<span class="font-label-sm text-label-sm">UMKM</span>
+</button>
+<!-- IPL (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors Active: scale-90 duration-150 p-2 rounded-xl">
+<span class="material-symbols-outlined mb-1">receipt_long</span>
+<span class="font-label-sm text-label-sm">IPL</span>
+</button>
+<!-- News (Active) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 hover:bg-surface-container-high transition-colors Active: scale-90 duration-150">
+<span class="material-symbols-outlined icon-filled mb-1">campaign</span>
+<span class="font-label-sm text-label-sm">News</span>
+</button>
+<!-- Profile (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors Active: scale-90 duration-150 p-2 rounded-xl">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+</body></html>

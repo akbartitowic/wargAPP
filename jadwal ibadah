@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jadwal Ibadah</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#b3c5ff",
+                    "secondary-fixed-dim": "#c8c8b0",
+                    "tertiary": "#001902",
+                    "surface-bright": "#fcf9f8",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#1b1c1c",
+                    "tertiary-fixed": "#94f990",
+                    "on-tertiary-fixed": "#002204",
+                    "background": "#fcf9f8",
+                    "outline-variant": "#c5c6d2",
+                    "primary-fixed": "#dbe1ff",
+                    "on-surface-variant": "#444650",
+                    "tertiary-fixed-dim": "#78dc77",
+                    "outline": "#757682",
+                    "inverse-primary": "#b3c5ff",
+                    "on-primary-fixed": "#00174a",
+                    "inverse-surface": "#303030",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#2a4386",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#e1e1c9",
+                    "surface-tint": "#435b9f",
+                    "on-secondary-container": "#636451",
+                    "secondary": "#5e604d",
+                    "on-surface": "#1b1c1c",
+                    "on-secondary-fixed": "#1b1d0e",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#003007",
+                    "surface-container": "#f0eded",
+                    "on-tertiary-container": "#3fa345",
+                    "on-secondary-fixed-variant": "#474836",
+                    "inverse-on-surface": "#f3f0f0",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#e4e2e1",
+                    "secondary-fixed": "#e4e4cc",
+                    "error-container": "#ffdad6",
+                    "surface": "#fcf9f8",
+                    "surface-container-low": "#f6f3f2",
+                    "surface-dim": "#dcd9d9",
+                    "on-tertiary-fixed-variant": "#005313",
+                    "primary": "#00113a",
+                    "primary-container": "#002366",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#758dd5",
+                    "surface-container-highest": "#e4e2e1",
+                    "surface-container-high": "#eae7e7",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "1rem",
+                    "base": "8px",
+                    "xl": "2rem",
+                    "xs": "0.25rem",
+                    "lg": "1.5rem",
+                    "sm": "0.5rem",
+                    "container-margin": "1.5rem",
+                    "md": "1rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased">
+<!-- Top Navigation (Task focus: Close/Back action implies temporary departure. Suppressing top app bar navigation elements except back) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-container-margin py-md flex items-center shadow-[0_4px_12px_rgba(0,0,0,0.02)]">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors text-primary mr-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary font-bold tracking-tight">Jadwal Ibadah</h1>
+</header>
+<main class="flex-1 pb-24 max-w-[1200px] w-full mx-auto">
+<!-- Filter Section -->
+<section class="px-container-margin py-sm">
+<div class="flex overflow-x-auto no-scrollbar gap-sm pb-2">
+<button class="whitespace-nowrap px-4 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm">Islam</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">Kristen</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">Katolik</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">Hindu</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">Buddha</button>
+<button class="whitespace-nowrap px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">Konghucu</button>
+</div>
+</section>
+<div class="md:grid md:grid-cols-12 md:gap-gutter px-container-margin md:px-0">
+<!-- Left Column: Hero & Schedule -->
+<div class="md:col-span-7 lg:col-span-8 flex flex-col gap-gutter px-container-margin md:px-0">
+<!-- Hero Card -->
+<section class="mt-md">
+<div class="bg-primary rounded-xl p-lg shadow-lg relative overflow-hidden text-on-primary">
+<!-- Decorative bg element -->
+<div class="absolute -right-10 -top-10 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[150px]" style="font-variation-settings: 'FILL' 1;">mosque</span>
+</div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-xl">
+<div>
+<p class="font-body-md text-body-md text-primary-fixed-dim mb-1">Menuju Maghrib</p>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-primary font-bold">01:15:30</h2>
+</div>
+<div class="flex items-center gap-2 mt-auto">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+<p class="font-label-sm text-label-sm text-primary-fixed-dim uppercase tracking-wider">10 Mei 2026 / 23 Syawal 1447</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Prayer Schedule Grid -->
+<section class="bg-surface-container-lowest rounded-xl p-md shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-surface-variant">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-md px-2">Jadwal Hari Ini</h3>
+<div class="flex flex-col">
+<!-- Imsak -->
+<div class="flex justify-between items-center py-3 px-4 border-b border-surface-variant/50">
+<span class="font-body-md text-body-md text-on-surface-variant">Imsak</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">04:25</span>
+</div>
+<!-- Subuh -->
+<div class="flex justify-between items-center py-3 px-4 border-b border-surface-variant/50">
+<span class="font-body-md text-body-md text-on-surface-variant">Subuh</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">04:35</span>
+</div>
+<!-- Dzuhur -->
+<div class="flex justify-between items-center py-3 px-4 border-b border-surface-variant/50">
+<span class="font-body-md text-body-md text-on-surface-variant">Dzuhur</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">11:55</span>
+</div>
+<!-- Ashar (Active) -->
+<div class="flex justify-between items-center py-3 px-4 bg-primary-container/20 rounded-lg border border-primary/10 my-1 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="font-label-md text-label-md text-primary">Ashar</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary">15:15</span>
+</div>
+<!-- Maghrib -->
+<div class="flex justify-between items-center py-3 px-4 border-b border-surface-variant/50">
+<span class="font-body-md text-body-md text-on-surface-variant">Maghrib</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">17:58</span>
+</div>
+<!-- Isya -->
+<div class="flex justify-between items-center py-3 px-4">
+<span class="font-body-md text-body-md text-on-surface-variant">Isya</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">19:10</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Nearest Places of Worship -->
+<div class="md:col-span-5 lg:col-span-4 mt-lg md:mt-md px-container-margin md:px-0">
+<section>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-sm text-headline-sm text-primary">Tempat Ibadah Terdekat</h3>
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm">Lihat Semua</button>
+</div>
+<div class="flex md:flex-col overflow-x-auto md:overflow-visible no-scrollbar gap-gutter pb-4 md:pb-0">
+<!-- Card 1 -->
+<div class="min-w-[280px] md:min-w-0 bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-surface-variant overflow-hidden group hover:-translate-y-0.5 transition-transform duration-200 cursor-pointer">
+<div class="aspect-video w-full relative bg-surface-variant">
+<img alt="Masjid Al-Ikhlas" class="w-full h-full object-cover" data-alt="A modern, beautifully designed mosque with clean architectural lines bathed in warm afternoon sunlight, showcasing a harmonious blend of traditional Islamic motifs and contemporary residential community design. The setting conveys peace, community, and the bright, welcoming aesthetic of the Warga App style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACnVhl6g1crPOa0jztojVUQKuKziJf1jm5EwR8DjB2tONZweTKT6Tstlpi9o6LHGo5X2WuglsXH1BIEerW210rXEL4GuTqjSLKCrzhtlHs7j3ukU65o_Xl-BSj7-o4tWSeQXdi1QDjF6M-4bd7FsAOyE7P2GCLOKDNYjda5khpM81swIrHhwk09nzLMsB86qv8pL4UNNWWsFCSpYgHsmj1wPsw27vwkX0FvLOXTG8PePpvut0CKMeIxoLljzrdPhZwvghLKBek6Ehp"/>
+<div class="absolute top-2 right-2 bg-surface/90 backdrop-blur text-primary p-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">map</span>
+</div>
+</div>
+<div class="p-md">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1 truncate">Masjid Al-Ikhlas</h4>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-error">location_on</span>
+<span class="font-body-sm text-body-sm">0.4 km - Blok D</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[280px] md:min-w-0 bg-surface-container-lowest rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-surface-variant overflow-hidden group hover:-translate-y-0.5 transition-transform duration-200 cursor-pointer">
+<div class="aspect-video w-full relative bg-surface-variant">
+<img alt="Mushola Al-Hidayah" class="w-full h-full object-cover" data-alt="A small, elegant neighborhood prayer room (mushola) nestled within a residential block. The exterior features light beige walls with subtle geometric patterns and a manicured green garden in front. The scene is brightly lit with a soft, welcoming atmosphere, aligning perfectly with a modern, high-end residential community app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUJmjretIyA3ccSIPodkrqYeIbf6WBUsPmhZu8V6u9BjEVwqJcI7LCB3WzTOcrWsEbNCADuQi-OEEkklhlqkxaAO8y8R0T1_oxZaZAo8-W_4UqqO3VTlyaLFdp8dhI7xLwz824Jv3km1ufsGcHX5NWwffDRmoHMAsvdNfUOA9TZvI13dxCWC-D-Am7Mp-BSRyzoYruZ6VTBfWeKnT7LUa8ZQXlVBSxMo425gFMQK7TxH9FoD0SBbsb8aNiuCMLSkjE_YnGSlhlXB6s"/>
+<div class="absolute top-2 right-2 bg-surface/90 backdrop-blur text-primary p-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">map</span>
+</div>
+</div>
+<div class="p-md">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1 truncate">Mushola Al-Hidayah</h4>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-error">location_on</span>
+<span class="font-body-sm text-body-sm">0.2 km - Blok B</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Suppressed BottomNavBar: The prompt asks for it, but the navigation rules strictly state to exclude navigation shells if the page intent is linear/task-focused with a Back action. However, to fulfill the prompt's explicit request "Bottom Navbar from predicted components" while adhering to the JSON styling rules: -->
+<!-- Note: "Home" is assumed active as it's typically where generic category browsing branches from if not Profile/News/IPL/UMKM -->
+<nav class="md:hidden docked full-width bottom-0 rounded-t-xl shadow-[0_-4px_12px_rgba(0,0,0,0.05)] shadow-lg bg-surface dark:bg-surface-container-lowest fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2">
+<!-- Home (Active) -->
+<a aria-label="Home" class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<!-- UMKM -->
+<a aria-label="UMKM" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+<span class="font-label-sm text-label-sm mt-1">UMKM</span>
+</a>
+<!-- IPL -->
+<a aria-label="IPL" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">receipt_long</span>
+<span class="font-label-sm text-label-sm mt-1">IPL</span>
+</a>
+<!-- News -->
+<a aria-label="News" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">campaign</span>
+<span class="font-label-sm text-label-sm mt-1">News</span>
+</a>
+<!-- Profile -->
+<a aria-label="Profile" class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

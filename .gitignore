@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Environment & secrets
+.env
+.env.local
+*.local
+
+# Logs
+*.log
+logs/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# API runtime data
+api/storage/
+api/uploads/
+api/data/wilayah/

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UMKM Warga - Warga App</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fcf9f8",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#2a4386",
+                        "on-secondary-fixed-variant": "#474836",
+                        "tertiary": "#001902",
+                        "on-secondary-fixed": "#1b1d0e",
+                        "primary-container": "#002366",
+                        "primary": "#00113a",
+                        "tertiary-fixed-dim": "#78dc77",
+                        "surface-variant": "#e4e2e1",
+                        "secondary-fixed": "#e4e4cc",
+                        "inverse-surface": "#303030",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#b3c5ff",
+                        "on-surface-variant": "#444650",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#94f990",
+                        "tertiary-container": "#003007",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "outline": "#757682",
+                        "surface-tint": "#435b9f",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "on-surface": "#1b1c1c",
+                        "surface-bright": "#fcf9f8",
+                        "secondary-container": "#e1e1c9",
+                        "surface-container": "#f0eded",
+                        "surface-container-high": "#eae7e7",
+                        "secondary-fixed-dim": "#c8c8b0",
+                        "on-primary-fixed": "#00174a",
+                        "on-tertiary-fixed": "#002204",
+                        "primary-fixed": "#dbe1ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#758dd5",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-container-low": "#f6f3f2",
+                        "on-background": "#1b1c1c",
+                        "on-secondary-container": "#636451",
+                        "secondary": "#5e604d",
+                        "surface": "#fcf9f8",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c5c6d2",
+                        "on-tertiary-container": "#3fa345",
+                        "inverse-on-surface": "#f3f0f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "0.25rem",
+                        "gutter": "1rem",
+                        "lg": "1.5rem",
+                        "base": "8px",
+                        "sm": "0.5rem",
+                        "xl": "2rem",
+                        "container-margin": "1.5rem",
+                        "md": "1rem"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md h-screen overflow-hidden flex">
+<!-- Desktop Navigation Drawer (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col h-full w-80 rounded-r-xl divide-y divide-outline-variant shadow-xl bg-surface dark:bg-surface-container p-gutter text-primary dark:text-primary-fixed-dim font-body-md z-50">
+<!-- Header: Profile -->
+<div class="flex items-center gap-md py-lg">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant flex-shrink-0">
+<img alt="Resident Avatar" class="w-full h-full object-cover" data-alt="A close-up portrait of a friendly young professional resident. The image is brightly lit, reflecting a warm, welcoming community vibe, set against a soft, neutral studio background to match the modern, clean interface aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-mZj5X9Uu4yrCwIVdMj0wG_0neE3HeLSDgf51xPzqzc0d3Wxjn2VUXLcpnKjaff-yitlXAUpxUzA7pbtuiGrxutTRw1SpwKnVEB_1FntT5AWo80M5chJ0eLe0ThNQCvXPTBlsmkQMrL9xwHFDyrGwLLEQEKxgFTBexrb98oj1XTxLCbSaOsL6xbZBtyCEmSOpmU841wGYRWDL89s8Ye-G1N9O4qLF6damebzBvFMgmnfngNzTKLbVhzzUFE3lh1e4Ni3bGmdwDpYF"/>
+</div>
+<div class="flex flex-col text-left">
+<span class="font-headline-sm text-headline-sm text-on-surface">Resident Name</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Block A-12</span>
+<span class="font-label-sm text-label-sm text-primary mt-xs">Parent Account</span>
+</div>
+</div>
+<!-- Navigation Items -->
+<ul class="flex-1 overflow-y-auto py-md space-y-xs">
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface hover:bg-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">emergency</span>
+<span>Emergency Call</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface hover:bg-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">security</span>
+<span>Security Report</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface hover:bg-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group_add</span>
+<span>Guest Log</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface hover:bg-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">apartment</span>
+<span>Facility Booking</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface hover:bg-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">description</span>
+<span>Document Request</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface hover:bg-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+<span>Help Center</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-container-margin py-md w-full bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container font-headline-sm text-headline-sm docked full-width top-0 z-40 sticky shadow-sm">
+<div class="flex items-center gap-sm">
+<!-- Leading Avatar (Mobile Only, Desktop has SideNav) -->
+<div class="md:hidden w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Resident Profile Photo" class="w-full h-full object-cover" data-alt="A close-up portrait of a friendly resident. The image is brightly lit, reflecting a warm, welcoming community vibe, set against a soft, neutral studio background to match the modern, clean interface aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqTxKzpOlyT7L80zMFcBr11IUMYcmfyCPuCf5ffRlPKKVdYPysKtkgU-Ii_oMhLv_raJCePxYdffXFu1hWP5mYFuUiIQbpaShFYRXQGB_jC6aXC6rUnGrRFQPcIqs87Oz4ZY_apXLyjEkiuObkHI3dbzykAw42x990TM9jv1WICetISaC1Dc_oCjTwbYc-ciILgUeA2Xd6hYKQpnmJsLVaH2QN4Ov1JlJEquoo3ryxYsvyWxbruGBHxb8wQ3TfCyeNhxJMLdmv-znZ"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">Warga App</h1>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-primary hover:opacity-80 transition-transform active:scale-95 bg-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Scrollable Page Content -->
+<main class="flex-1 overflow-y-auto pb-24 md:pb-xl px-container-margin pt-lg w-full">
+<div class="max-w-[1200px] mx-auto w-full">
+<!-- Page Header & Search -->
+<div class="mb-xl">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-sm">UMKM Warga</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Dukung usaha tetangga, penuhi kebutuhan sehari-hari.</p>
+<div class="relative w-full max-w-xl">
+<span class="material-symbols-outlined absolute left-md top-1/2 transform -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl py-3 pl-12 pr-4 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors shadow-sm" placeholder="Cari toko atau produk..." type="text"/>
+</div>
+</div>
+<!-- Filters -->
+<div class="mb-xl overflow-x-auto pb-2 hide-scrollbar">
+<div class="flex gap-sm w-max">
+<button class="px-md py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md border border-primary transition-all">Semua</button>
+<button class="px-md py-2 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-all">Makanan</button>
+<button class="px-md py-2 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-all">Jasa</button>
+<button class="px-md py-2 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-all">Kebutuhan Harian</button>
+<button class="px-md py-2 rounded-full bg-surface-container-lowest text-on-surface-variant font-label-md text-label-md border border-outline-variant hover:bg-surface-variant transition-all">Pakaian</button>
+</div>
+</div>
+<!-- Store Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Store Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,17,58,0.08)] hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,17,58,0.12)] transition-all duration-300 border border-transparent hover:border-outline-variant/30 flex flex-col">
+<div class="relative h-48 w-full overflow-hidden bg-surface-variant">
+<img alt="Kedai Kopi" class="w-full h-full object-cover" data-alt="A warm, inviting shot of a local coffee shop counter with freshly baked pastries and an espresso machine. Soft, natural sunlight pours in, creating a comforting, neighborly atmosphere. High quality, well-lit, matching the modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe_ohJVlSCY1NtoUiROn2nAvqHy3APbtdLssb2l4i48htF5-iccytPWwbBAEkDEEjap4W49Uyk9_-qoCpM6PF2Sq6laaH1nXgxgk4bXzWNQ-poTvRv-XyvDHVhF4DnXils4HYrb2zp87T1MIDNt4SSdcPRJMsAk3nkfmSdHBvMsHx2O0CiHp_JvbpPIeoROw6rnkHskTD1wIZhMbnw_I-YFLA_Xv3evHIzWFN7PBlIwjgKF4c2Gw0rQtgItPQYk5QGzvF0TNqI6wwJ"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur-sm px-xs py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[#facc15] text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">4.8</span>
+</div>
+</div>
+<div class="p-container-margin flex flex-col flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Kopi Tetangga Blok B</h3>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm px-2 py-1 rounded-md ml-sm flex-shrink-0">Buka</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> 200m • Makanan &amp; Minuman
+                            </p>
+<div class="mt-auto">
+<button class="w-full h-12 bg-primary text-on-primary font-label-md text-label-md rounded-lg flex justify-center items-center gap-sm hover:opacity-90 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+                                    Pesan via WhatsApp
+                                </button>
+</div>
+</div>
+</div>
+<!-- Store Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,17,58,0.08)] hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,17,58,0.12)] transition-all duration-300 border border-transparent hover:border-outline-variant/30 flex flex-col">
+<div class="relative h-48 w-full overflow-hidden bg-surface-variant">
+<img alt="Toko Kelontong" class="w-full h-full object-cover" data-alt="A neatly organized local grocery store aisle featuring fresh produce and daily necessities. The scene is brightly lit with clean, modern shelving, conveying a sense of convenience and reliability within a neighborhood setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfgk06DEOl6B2cSN3epVxPd9F9qm7dUh4D9K3UcOScNnocQ3k2ETw68aq6v6cBVyBw8G83I9gNg4HpMgEONFK2L72WS8HkWk3DJqSr5IU3uW6O5mN-laii-dB8-btG2uPlVVqk4qAffcNTzlZWyrU9w2UFq6foET6qRIpAIMe8XoxgXY4wjXy-Q_oO4EPUr_lLiSKf59pxXC9F9_ffgPVzaiVWCRgoY5x-1OhIjfboPyrTcdm65Ang9eBVYKFJbWrDW86dsgTdiPQw"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur-sm px-xs py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[#facc15] text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">4.5</span>
+</div>
+</div>
+<div class="p-container-margin flex flex-col flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Warung Bu Siti</h3>
+<span class="bg-surface-variant text-on-surface-variant font-label-sm text-label-sm px-2 py-1 rounded-md ml-sm flex-shrink-0">Tutup</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> 50m • Kebutuhan Harian
+                            </p>
+<div class="mt-auto">
+<button class="w-full h-12 bg-surface-variant text-on-surface-variant font-label-md text-label-md rounded-lg flex justify-center items-center gap-sm cursor-not-allowed opacity-70">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+                                    Pesan via WhatsApp
+                                </button>
+</div>
+</div>
+</div>
+<!-- Store Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_12px_rgba(0,17,58,0.08)] hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,17,58,0.12)] transition-all duration-300 border border-transparent hover:border-outline-variant/30 flex flex-col">
+<div class="relative h-48 w-full overflow-hidden bg-surface-variant">
+<img alt="Laundry Services" class="w-full h-full object-cover" data-alt="A clean, modern laundry service interior with pristine washing machines. The lighting is bright and airy, emphasizing hygiene and professional care, fitting the corporate yet welcoming community aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzkVLcrVhUVoE6wjef-n4VilBdELcl5dpTrAFUipOYFgDQAzzciOBYhOnTzrxx_PKCyi2clFO4fm1l7jNO1TQYGHoH7sNMs5KH_J2EWkfO8KYGtgw1EwUulyzL_BpWKtgpw6qoqc4BPd54nGNYl7uWd4KcqLK85BC4i4UYPcO0CbeSdpxiSfjSlyUtbS1CqmpOHDRrYkfDIsYMCx5-te4ociGtDHASI4-ndOfzrg-LAGvMWRtj7bVKExq1s23JaVFTtYRa6iWmXIho"/>
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur-sm px-xs py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[#facc15] text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">4.9</span>
+</div>
+</div>
+<div class="p-container-margin flex flex-col flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface line-clamp-1">Klin Laundry Express</h3>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm px-2 py-1 rounded-md ml-sm flex-shrink-0">Buka</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> 400m • Jasa
+                            </p>
+<div class="mt-auto">
+<button class="w-full h-12 bg-primary text-on-primary font-label-md text-label-md rounded-lg flex justify-center items-center gap-sm hover:opacity-90 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+                                    Pesan via WhatsApp
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-surface-container-lowest text-primary dark:text-primary-fixed-dim font-label-sm text-label-sm rounded-t-xl shadow-[0_-4px_12px_rgba(0,0,0,0.05)] shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-sm rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 hover:bg-surface-container-high transition-colors Active: scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span>UMKM</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-sm rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">receipt_long</span>
+<span>IPL</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-sm rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">campaign</span>
+<span>News</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors p-sm rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span>Profile</span>
+</a>
+</nav>
+</div>
+</body></html>

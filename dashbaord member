@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warga App - Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#fcf9f8",
+                      "on-error": "#ffffff",
+                      "on-primary-fixed-variant": "#2a4386",
+                      "on-secondary-fixed-variant": "#474836",
+                      "tertiary": "#001902",
+                      "on-secondary-fixed": "#1b1d0e",
+                      "primary-container": "#002366",
+                      "primary": "#00113a",
+                      "tertiary-fixed-dim": "#78dc77",
+                      "surface-variant": "#e4e2e1",
+                      "secondary-fixed": "#e4e4cc",
+                      "inverse-surface": "#303030",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-primary": "#b3c5ff",
+                      "on-surface-variant": "#444650",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#94f990",
+                      "tertiary-container": "#003007",
+                      "on-error-container": "#93000a",
+                      "primary-fixed-dim": "#b3c5ff",
+                      "outline": "#757682",
+                      "surface-tint": "#435b9f",
+                      "on-tertiary-fixed-variant": "#005313",
+                      "on-surface": "#1b1c1c",
+                      "surface-bright": "#fcf9f8",
+                      "secondary-container": "#e1e1c9",
+                      "surface-container": "#f0eded",
+                      "surface-container-high": "#eae7e7",
+                      "secondary-fixed-dim": "#c8c8b0",
+                      "on-primary-fixed": "#00174a",
+                      "on-tertiary-fixed": "#002204",
+                      "primary-fixed": "#dbe1ff",
+                      "error-container": "#ffdad6",
+                      "on-primary-container": "#758dd5",
+                      "surface-dim": "#dcd9d9",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e4e2e1",
+                      "surface-container-low": "#f6f3f2",
+                      "on-background": "#1b1c1c",
+                      "on-secondary-container": "#636451",
+                      "secondary": "#5e604d",
+                      "surface": "#fcf9f8",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#c5c6d2",
+                      "on-tertiary-container": "#3fa345",
+                      "inverse-on-surface": "#f3f0f0",
+                      "muted-yellow": "#F5F5DC"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "1rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "0.25rem",
+                      "gutter": "1rem",
+                      "lg": "1.5rem",
+                      "base": "8px",
+                      "sm": "0.5rem",
+                      "xl": "2rem",
+                      "container-margin": "1.5rem",
+                      "md": "1rem"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "headline-sm": ["Plus Jakarta Sans"],
+                      "body-sm": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F5F5DC; /* Muted Yellow Beige */
+        }
+        .soft-shadow {
+            box-shadow: 0 4px 20px rgba(0, 17, 58, 0.08); /* Royal Blue tinted high-diffusion shadow */
+        }
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen pb-24 font-body-md text-on-background">
+<!-- Header Section -->
+<header class="bg-primary-container text-on-primary rounded-b-xl pt-10 pb-20 px-container-margin relative z-0">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<img alt="Ibu Sari Pratama Profile" class="w-12 h-12 rounded-full object-cover border-2 border-white/20" data-alt="A close-up portrait of a friendly Indonesian woman, Ibu Sari Pratama, wearing modern casual attire, smiling warmly. The lighting is soft and natural, emphasizing a welcoming, community-focused mood. The color palette incorporates subtle royal blue tones in the background to match a corporate yet hospitable app interface. High-quality, modern photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvI2QxU_C1q8cqsXPRzOHS65IIkzZQYMlALdw2qVJnCl41odMjIjhoXayyJsKyF7vw8EjzL4D6rqfQHMYXBHKimbnHtd-DhudqN3Y9ZCYMay59ih4YqjHXUAFctGnzxkgwUATz62HpLGZ9W09nLkGzKf5nT-2Fu-Dth5lTPYB2J71mtjNllhpfCkaJ5FfIW88zRcfTSHVj7skel4zd6Y2yMmfWmWlWP-0cA902MwNwAYFge78JuBdoHcg-bIalcDvzOBwA5BU9xQYA"/>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-white">Ibu Sari Pratama</h1>
+<p class="font-body-sm text-body-sm text-inverse-primary">Block A-12 • Member</p>
+</div>
+</div>
+<button aria-label="Notifications" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-container-margin -mt-12 relative z-10 flex flex-col gap-lg">
+<!-- Floating Billing Card (Non-Parent View) -->
+<section class="bg-surface-container-lowest rounded-xl p-6 soft-shadow flex flex-col gap-sm">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Tagihan Bulan Mei</h2>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 text-center">
+<span class="material-symbols-outlined text-outline text-4xl mb-2" style="font-variation-settings: 'FILL' 0;">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Hubungi Kepala Keluarga untuk Pembayaran</p>
+</div>
+<!-- Disabled Button for visual feedback -->
+<button class="mt-2 w-full h-12 rounded-lg bg-surface-variant text-on-surface-variant font-label-md text-label-md flex items-center justify-center gap-2 opacity-70 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">lock</span>
+                Bayar Sekarang
+            </button>
+</section>
+<!-- Quick Menu Grid -->
+<section class="grid grid-cols-4 gap-4 mt-2">
+<!-- Item 1: History -->
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest soft-shadow flex items-center justify-center group-hover:-translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 0;">history</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center">Riwayat IPL</span>
+</button>
+<!-- Item 2: Shop -->
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest soft-shadow flex items-center justify-center group-hover:-translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 0;">storefront</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center">Toko Terdekat</span>
+</button>
+<!-- Item 3: Schedule -->
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest soft-shadow flex items-center justify-center group-hover:-translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center">Jadwal Ibadah</span>
+</button>
+<!-- Item 4: Mosque -->
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest soft-shadow flex items-center justify-center group-hover:-translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 0;">mosque</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center">Masjid Al-Ikhlas</span>
+</button>
+<!-- Item 5: Others -->
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 rounded-full bg-surface-container-lowest soft-shadow flex items-center justify-center group-hover:-translate-y-0.5 transition-transform">
+<span class="material-symbols-outlined text-outline text-2xl" style="font-variation-settings: 'FILL' 0;">more_horiz</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface text-center">Lainnya</span>
+</button>
+</section>
+<!-- News Feed Section -->
+<section class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Berita &amp; Info Warga</h2>
+<button class="font-label-sm text-label-sm text-primary-container hover:underline">Lihat Semua</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden soft-shadow group cursor-pointer">
+<div class="relative aspect-video w-full">
+<img alt="CCTV Update" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A modern outdoor security camera mounted on a clean white wall in a well-lit residential neighborhood setting. The lighting is bright and sunny, conveying safety and modern community infrastructure. The composition uses a warm, optimistic color palette with soft shadows, fitting a friendly neighborhood app aesthetic. Professional architectural photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBON8YGFYPiE7B_s1UzWijNH6cQz4jWXfbxJKl-NI3MiBbDVDhppCyIknVXV97dS1cn49QDD1cPhPfXsO0TkizuyWxZsWRYcS_XhUkqiBpJzrxPrb69hujjdHzqaJ00unxfcykDVFR73Zz1WvjriclTMuphaIQQGLVC1GczOeekmqwD5jgttPeE8X8UaU9-Xx_2aJFtnhgXW2CNShZP8XanNTMGaLpARCU4IEen7MQtlfN2pF3O6saBh0ZavLMIMsn5TK7KR_6SWHk_"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-4">
+<h3 class="font-headline-sm text-headline-sm text-white drop-shadow-md">Pembaruan CCTV Lingkungan</h3>
+</div>
+</div>
+<div class="p-4 flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pengurus RT • 2 Jam yang lalu</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (MD:Hidden) -->
+<!-- Removed IPL Tab as per requirements -->
+<nav class="md:hidden bg-surface-container-lowest text-primary fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-2 rounded-t-xl shadow-[0_-4px_12px_rgba(0,0,0,0.05)] shadow-lg font-label-sm text-label-sm">
+<!-- Home (Active) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 scale-90 duration-150 group">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span>Home</span>
+</button>
+<!-- UMKM -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-xl px-3 py-1 group">
+<span class="material-symbols-outlined mb-1 group-hover:text-primary-container" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+<span>UMKM</span>
+</button>
+<!-- News -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-xl px-3 py-1 group">
+<span class="material-symbols-outlined mb-1 group-hover:text-primary-container" style="font-variation-settings: 'FILL' 0;">campaign</span>
+<span>News</span>
+</button>
+<!-- Profile -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-xl px-3 py-1 group">
+<span class="material-symbols-outlined mb-1 group-hover:text-primary-container" style="font-variation-settings: 'FILL' 0;">person</span>
+<span>Profile</span>
+</button>
+</nav>
+</body></html>
