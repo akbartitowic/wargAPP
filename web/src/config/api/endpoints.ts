@@ -426,3 +426,91 @@ export function mapQuickMenuKeys(
 ): QuickMenuKey[] {
   return normalizeQuickMenuOrder(items.map((i) => i.key))
 }
+
+export type ComplaintCategory = {
+  id: string
+  key: string
+  label: string
+  sort_order: number
+}
+
+export type ComplaintProgress = {
+  percent: number
+  current_step: number
+  total_steps: number
+  is_rejected: boolean
+  is_complete: boolean
+}
+
+export type ComplaintProgressStep = {
+  status: string
+  label: string
+  status_label: string
+  reached: boolean
+  current: boolean
+}
+
+export type ComplaintListItem = {
+  id: string
+  category_label: string
+  description: string
+  status: string
+  status_label: string
+  created_at: string
+  progress: ComplaintProgress
+}
+
+export type ComplaintAttachment = {
+  id: string
+  mime_type: string
+  file_size: number
+  file_url: string
+}
+
+export type ComplaintStatusLog = {
+  status: string
+  status_label: string
+  note: string | null
+  created_at: string
+}
+
+export type ComplaintDetail = ComplaintListItem & {
+  category_key: string
+  admin_note: string | null
+  resident_name: string
+  updated_at: string
+  progress_steps: ComplaintProgressStep[]
+  attachments: ComplaintAttachment[]
+  status_history: ComplaintStatusLog[]
+}
+
+export function fetchComplaintCategories() {
+  return apiJson<ComplaintCategory[]>('/complaints/categories')
+}
+
+export function fetchMyComplaints() {
+  return apiJson<ComplaintListItem[]>('/complaints')
+}
+
+export function fetchComplaintById(id: string) {
+  return apiJson<ComplaintDetail>(`/complaints/${id}`)
+}
+
+export async function submitComplaint(input: {
+  category_id: string
+  description: string
+  files: File[]
+}) {
+  const form = new FormData()
+  form.append('category_id', input.category_id)
+  form.append('description', input.description)
+  for (const file of input.files) {
+    form.append('attachments', file)
+  }
+  const res = await apiFetch('/complaints', { method: 'POST', body: form })
+  const body = await res.json()
+  if (!res.ok || body.status === 'error') {
+    throw new Error(body.message ?? 'Gagal mengirim komplain')
+  }
+  return body.data as ComplaintDetail
+}

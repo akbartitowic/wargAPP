@@ -12,6 +12,8 @@ import * as umkmController from '../controllers/umkm.controller.js'
 import * as umkmPartnerManageController from '../controllers/umkmPartnerManage.controller.js'
 import * as religiousController from '../controllers/religious.controller.js'
 import * as facilityController from '../controllers/facility.controller.js'
+import * as complaintController from '../controllers/complaint.controller.js'
+import { complaintUpload } from '../middlewares/complaintUpload.js'
 
 /** Route aplikasi warga — /api/v1 */
 export const apiRouter = Router()
@@ -110,3 +112,13 @@ apiRouter.get('/religious/places', authMiddleware, asyncHandler(religiousControl
 
 apiRouter.get('/facilities', authMiddleware, asyncHandler(facilityController.list))
 apiRouter.get('/facilities/:id', authMiddleware, asyncHandler(facilityController.getById))
+
+apiRouter.get('/complaints/categories', authMiddleware, asyncHandler(complaintController.listCategories))
+apiRouter.get('/complaints', authMiddleware, asyncHandler(complaintController.listMine))
+apiRouter.get('/complaints/:id', authMiddleware, asyncHandler(complaintController.getById))
+apiRouter.post(
+  '/complaints',
+  authMiddleware,
+  complaintUpload.array('attachments', 8),
+  asyncHandler(complaintController.create),
+)

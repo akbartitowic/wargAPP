@@ -5,6 +5,7 @@ import {
   ClipboardList,
   LayoutDashboard,
   MapPin,
+  MessageSquareWarning,
   Newspaper,
   Shield,
   UserCircle,
@@ -43,6 +44,7 @@ const baseItems: {
   { title: 'Pengeluaran IPL', url: '/billing/pengeluaran', icon: CircleDollarSign },
   { title: 'Verifikasi bukti', url: '/billing/verifikasi', icon: BadgeCheck },
   { title: 'Berita', url: '/news', icon: Newspaper },
+  { title: 'Komplain warga', url: '/complaints', icon: MessageSquareWarning },
   { title: 'UMKM', url: '/umkm', icon: Store },
   { title: 'Lokasi & fasum', url: '/locations', icon: MapPin },
   { title: 'Audit log', url: '/audit', icon: ClipboardList, superAdminOnly: true },
@@ -66,6 +68,9 @@ export function AppSidebar() {
     }
     if (url.startsWith('/billing')) {
       return location.pathname === url || location.pathname.startsWith(`${url}/`)
+    }
+    if (url === '/complaints') {
+      return location.pathname === '/complaints' || location.pathname.startsWith('/complaints/')
     }
     return location.pathname === url || location.pathname.startsWith(`${url}/`)
   }

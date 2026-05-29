@@ -10,8 +10,10 @@ import {
   Store,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { BottomDrawer } from '@/components/ui/BottomDrawer'
+import { MainNavDrawerList } from '@/components/layout/MainNavDrawerList'
 import { fetchBillingCurrent } from '@/config/api/endpoints'
 import { isApiConfigured } from '@/config/api/client'
 import { ButtonLink } from '@/components/ui/Button'
@@ -29,10 +31,6 @@ const circleBase =
 
 const iconStyleDefault = 'surface-icon-btn text-royal'
 
-const iconStyleIplUnpaid =
-  'border border-royal/15 bg-sky-100 text-royal shadow-[0_2px_8px_rgba(0,35,102,0.1)]'
-const iconStyleIplPaid =
-  'border border-success/25 bg-success-soft text-success shadow-[0_2px_8px_rgba(13,92,47,0.12)]'
 const iconStyleAccent =
   'border border-amber-200 bg-amber-100 text-amber-900 shadow-[0_2px_8px_rgba(0,35,102,0.08)]'
 const iconStyleInfo =
@@ -193,10 +191,10 @@ export function MemberOverlapStack() {
 }
 
 const quickLabel =
-  'mt-2 max-w-[5rem] text-center text-[11px] font-semibold leading-tight text-royal'
+  'mt-2 flex min-h-[2.25rem] w-full items-start justify-center px-0.5 text-center text-[10px] font-semibold leading-snug text-royal line-clamp-2'
 
-const quickFocus =
-  'flex flex-col items-center rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal/40'
+const quickCell =
+  'flex min-w-0 flex-col items-center rounded-xl py-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-royal/40'
 
 type QuickResolved = { to: string; label: string; icon: LucideIcon; iconWrap: string }
 
@@ -236,7 +234,7 @@ function resolveQuickMenuItems(
         to: '/ipl',
         label: 'Tagihan IPL',
         icon: paidLike ? BadgeCheck : ReceiptText,
-        iconWrap: paidLike ? iconStyleIplPaid : iconStyleIplUnpaid,
+        iconWrap: iconStyleDefault,
       })
       continue
     }
@@ -253,7 +251,7 @@ function resolveQuickMenuItems(
     if (key === 'fasilitas_umum') {
       out.push({
         to: '/fasilitas',
-        label: 'Fasilitas umum',
+        label: 'Fasilitas',
         icon: MapPinned,
         iconWrap: iconStyleDefault,
       })
@@ -304,54 +302,60 @@ function resolveQuickMenuItems(
   return out
 }
 
-const lainnyaItem: QuickResolved = {
-  to: '/profile',
-  label: 'Lainnya',
-  icon: Grid2X2,
-  iconWrap: iconStyleDefault,
-}
-
 export function HomeQuickActions() {
   const is_parent = useSessionStore((s) => s.is_parent)
   const quick_menu_order = useSessionStore((s) => s.quick_menu_order)
   const member_ipl_slot = useSessionStore((s) => s.member_ipl_slot)
   const billing_status = useSessionStore((s) => s.billing_status)
   const preferRetail = useSessionStore((s) => s.prefer_retail_quick_slot)
+  const [menuDrawerOpen, setMenuDrawerOpen] = useState(false)
 
-  const menuItems = [
-    ...resolveQuickMenuItems(
-      quick_menu_order,
-      is_parent,
-      member_ipl_slot,
-      billing_status,
-      preferRetail,
-    ),
-    lainnyaItem,
-  ]
+  const quickItems = resolveQuickMenuItems(
+    quick_menu_order,
+    is_parent,
+    member_ipl_slot,
+    billing_status,
+    preferRetail,
+  ).slice(0, 3)
 
   return (
     <section className="px-4 pt-6" aria-label="Menu cepat">
-      <div className="surface-card px-3 py-4">
-        <h2 className="mb-4 text-sm font-bold text-royal">Menu cepat</h2>
-        <div className="grid grid-cols-4 gap-x-1 gap-y-5">
-        {menuItems.map((item, idx) => {
-          const Icon = item.icon
-          const centerLainnya = idx === 4
-          return (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={`${quickFocus} ${centerLainnya ? 'col-span-4 mx-auto w-[5.5rem]' : ''}`}
-            >
-              <span className={`${circleBase} ${item.iconWrap}`}>
-                <Icon className="h-6 w-6" strokeWidth={2} aria-hidden />
-              </span>
-              <span className={quickLabel}>{item.label}</span>
-            </Link>
-          )
-        })}
+      <div className="surface-card px-4 py-4">
+        <h2 className="mb-3 text-sm font-bold text-royal">Menu cepat</h2>
+        <div className="grid grid-cols-4 gap-2">
+          {quickItems.map((item) => {
+            const Icon = item.icon
+            return (
+              <Link key={`${item.to}-${item.label}`} to={item.to} className={quickCell}>
+                <span className={`${circleBase} ${item.iconWrap}`}>
+                  <Icon className="h-6 w-6" strokeWidth={2} aria-hidden />
+                </span>
+                <span className={quickLabel}>{item.label}</span>
+              </Link>
+            )
+          })}
+          <button
+            type="button"
+            onClick={() => setMenuDrawerOpen(true)}
+            className={quickCell}
+            aria-haspopup="dialog"
+            aria-expanded={menuDrawerOpen}
+          >
+            <span className={`${circleBase} ${iconStyleDefault}`}>
+              <Grid2X2 className="h-6 w-6" strokeWidth={2} aria-hidden />
+            </span>
+            <span className={quickLabel}>Lainnya</span>
+          </button>
         </div>
       </div>
+
+      <BottomDrawer
+        open={menuDrawerOpen}
+        onClose={() => setMenuDrawerOpen(false)}
+        title="Menu"
+      >
+        <MainNavDrawerList onNavigate={() => setMenuDrawerOpen(false)} />
+      </BottomDrawer>
     </section>
   )
 }

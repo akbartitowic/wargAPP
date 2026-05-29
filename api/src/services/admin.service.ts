@@ -1,5 +1,7 @@
 import bcrypt from 'bcrypt'
+import { publicUploadUrl } from '../config/env.js'
 import { query, pool } from '../config/database.js'
+import { resolveStoredUploadWebPath } from '../utils/uploadPath.js'
 import {
   BadRequestError,
   ForbiddenError,
@@ -694,10 +696,11 @@ export async function listPendingProofs(admin: AdminTenantContext, housingFilter
     no_kk: string
     amount: string
     file_path: string
+    mime_type: string
     created_at: Date
   }>(
     `SELECT pp.id AS proof_id, pp.billing_id, r.nama AS resident_name, r.no_kk,
-            b.total_amount::text AS amount, pp.file_path, pp.created_at
+            b.total_amount::text AS amount, pp.file_path, pp.mime_type, pp.created_at
      FROM payment_proofs pp
      JOIN billings b ON b.id = pp.billing_id
      JOIN residents r ON r.id = pp.resident_id
@@ -713,6 +716,8 @@ export async function listPendingProofs(admin: AdminTenantContext, housingFilter
     no_kk: r.no_kk,
     amount: Number(r.amount),
     file_path: r.file_path,
+    file_url: publicUploadUrl(resolveStoredUploadWebPath(r.file_path)),
+    mime_type: r.mime_type,
     submitted_at: r.created_at.toISOString(),
   }))
 }

@@ -20,6 +20,8 @@ import { FacilitiesListPage } from '@/features/facilities/FacilitiesListPage'
 import { FacilityDetailPage } from '@/features/facilities/FacilityDetailPage'
 import { InformasiPage } from '@/pages/InformasiPage'
 import { LaporPage } from '@/pages/LaporPage'
+import { ComplaintsPage } from '@/features/complaints/ComplaintsPage'
+import { ComplaintDetailPage } from '@/features/complaints/ComplaintDetailPage'
 
 const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
@@ -48,6 +50,8 @@ const router = createBrowserRouter([
       { path: 'news', element: <NewsListPage /> },
       { path: 'news/:slug', element: <NewsDetailPage /> },
       { path: 'lapor', element: <LaporPage /> },
+      { path: 'komplain', element: <ComplaintsPage /> },
+      { path: 'komplain/:id', element: <ComplaintDetailPage /> },
       { path: 'informasi', element: <InformasiPage /> },
       { path: 'profile', element: <ProfilePage /> },
       { path: 'profile/edit', element: <EditProfilePage /> },

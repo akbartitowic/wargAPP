@@ -1,7 +1,14 @@
+import path from 'node:path'
 import type { Request, Response } from 'express'
+import { env } from '../config/env.js'
 import * as billingService from '../services/billing.service.js'
 import { sendSuccess } from '../utils/response.js'
 import { BadRequestError } from '../utils/errors.js'
+
+function paymentProofStoredPath(absolutePath: string): string {
+  const rel = path.relative(path.resolve(env.UPLOAD_DIR), absolutePath).replace(/\\/g, '/')
+  return rel.startsWith('uploads/') ? rel : `uploads/${rel}`
+}
 
 export async function getCurrent(req: Request, res: Response): Promise<void> {
   const data = await billingService.getCurrentBilling(
@@ -32,7 +39,11 @@ export async function uploadProof(req: Request, res: Response): Promise<void> {
     req.resident!.housing_unit_id,
     req.resident!.no_kk,
     billingId,
-    { path: req.file.path, mimetype: req.file.mimetype, size: req.file.size },
+    {
+      path: paymentProofStoredPath(req.file.path),
+      mimetype: req.file.mimetype,
+      size: req.file.size,
+    },
   )
   sendSuccess(res, data, 201)
 }

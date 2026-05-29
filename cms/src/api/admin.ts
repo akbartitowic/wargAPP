@@ -323,16 +323,20 @@ export function deactivateResident(id: string) {
   })
 }
 
+export type PendingPaymentProof = {
+  proof_id: string
+  billing_id: string
+  resident_name: string
+  no_kk?: string
+  amount: number
+  file_path?: string
+  file_url: string
+  mime_type: string
+  submitted_at: string
+}
+
 export function listPendingProofs() {
-  return apiJson<
-    {
-      proof_id: string
-      billing_id: string
-      resident_name: string
-      amount: number
-      submitted_at: string
-    }[]
-  >('/admin/billing/approval')
+  return apiJson<PendingPaymentProof[]>('/admin/billing/approval')
 }
 
 export function approveProof(proofId: string) {

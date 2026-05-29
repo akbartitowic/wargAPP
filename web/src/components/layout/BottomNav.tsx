@@ -1,11 +1,5 @@
-import {
-  Home,
-  Megaphone,
-  ReceiptText,
-  Store,
-  UserRound,
-} from 'lucide-react'
 import { NavLink } from 'react-router-dom'
+import { getMainNavItems } from '@/lib/mainNav'
 import { useSessionStore } from '@/store/sessionStore'
 
 const labelClass =
@@ -14,15 +8,7 @@ const labelClass =
 export function BottomNav() {
   const canAccessBilling = useSessionStore((s) => s.is_parent)
 
-  const items = [
-    { to: '/', label: 'Home', icon: Home, end: true },
-    { to: '/umkm', label: 'UMKM', icon: Store, end: false },
-    ...(canAccessBilling
-      ? [    { to: '/ipl', label: 'Tagihan', icon: ReceiptText, end: false } as const]
-      : []),
-    { to: '/news', label: 'Berita', icon: Megaphone, end: false },
-    { to: '/profile', label: 'Profil', icon: UserRound, end: false },
-  ]
+  const items = getMainNavItems(canAccessBilling)
 
   return (
     <nav

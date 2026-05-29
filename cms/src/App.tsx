@@ -39,6 +39,8 @@ import { UmkmPerubahanPage } from '@/pages/umkm/UmkmPerubahanPage'
 import { UmkmPersetujuanPage } from '@/pages/umkm/UmkmPersetujuanPage'
 import { UmkmCreatePage, UmkmEditPage } from '@/pages/umkm/UmkmShopPage'
 import { UmkmTokoPage } from '@/pages/umkm/UmkmTokoPage'
+import { ComplaintsListPage } from '@/pages/complaints/ComplaintsListPage'
+import { ComplaintCategoriesPage } from '@/pages/complaints/ComplaintCategoriesPage'
 
 const router = createBrowserRouter([
   { path: '/login', element: <CmsLoginPage /> },
@@ -132,6 +134,8 @@ const router = createBrowserRouter([
       { path: 'locations', element: <LocationsListPage /> },
       { path: 'locations/new', element: <LocationCreatePage /> },
       { path: 'locations/:id', element: <LocationEditPage /> },
+      { path: 'complaints', element: <ComplaintsListPage /> },
+      { path: 'complaints/categories', element: <ComplaintCategoriesPage /> },
       { path: 'audit', element: <AuditPage /> },
       { path: 'profile', element: <ProfilePage /> },
       { path: 'planning', element: <PlanningDocPage /> },

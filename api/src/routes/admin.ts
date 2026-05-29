@@ -11,6 +11,8 @@ import * as adminNewsController from '../controllers/adminNews.controller.js'
 import * as adminUmkmController from '../controllers/adminUmkm.controller.js'
 import * as adminFacilityController from '../controllers/adminFacility.controller.js'
 import * as newsCategoryController from '../controllers/newsCategory.controller.js'
+import * as complaintCategoryController from '../controllers/complaintCategory.controller.js'
+import * as adminComplaintController from '../controllers/adminComplaint.controller.js'
 
 /** Route CMS admin — /api/v1/admin */
 export const adminRouter = Router()
@@ -279,3 +281,28 @@ adminRouter.get('/facilities/:id', locationRoles, asyncHandler(adminFacilityCont
 adminRouter.post('/facilities', locationRoles, asyncHandler(adminFacilityController.create))
 adminRouter.put('/facilities/:id', locationRoles, asyncHandler(adminFacilityController.update))
 adminRouter.delete('/facilities/:id', locationRoles, asyncHandler(adminFacilityController.remove))
+
+const complaintRoles = requireAdminRoles('super_admin', 'housing_admin', 'content_admin')
+
+adminRouter.get(
+  '/complaint-categories',
+  complaintRoles,
+  asyncHandler(complaintCategoryController.listCategories),
+)
+adminRouter.post(
+  '/complaint-categories',
+  complaintRoles,
+  asyncHandler(complaintCategoryController.createCategory),
+)
+adminRouter.put(
+  '/complaint-categories/:id',
+  complaintRoles,
+  asyncHandler(complaintCategoryController.updateCategory),
+)
+adminRouter.get('/complaints', complaintRoles, asyncHandler(adminComplaintController.listComplaints))
+adminRouter.get('/complaints/:id', complaintRoles, asyncHandler(adminComplaintController.getComplaint))
+adminRouter.patch(
+  '/complaints/:id/status',
+  complaintRoles,
+  asyncHandler(adminComplaintController.updateStatus),
+)
